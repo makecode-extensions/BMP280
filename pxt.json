@@ -1,0 +1,17 @@
+{
+    "name": "BMP280",
+    "version": "1.0.0",
+    "description": "makecode BMP280 Digital Pressure Sensor Package for micro:bit",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*"
+    },
+    "files": [
+        "README.md",
+        "main.ts"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "public": true
+}
