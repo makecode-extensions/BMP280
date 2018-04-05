@@ -35,6 +35,11 @@ turn on BMP280.
 - function PowerOff()  
 goto sleep mode  
 
+- function Address(addr: BMP280_I2C_ADDRESS)  
+set BMP280's I2C address. addr may be:  
+  - BMP280_I2C_ADDRESS.ADDR_0x76
+  - BMP280_I2C_ADDRESS.ADDR_0x77
+
 ## Demo
 
 ![](https://raw.githubusercontent.com/microbit-makecode-packages/BMP280/master/demo.jpg)

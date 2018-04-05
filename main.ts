@@ -4,12 +4,18 @@
  * http://www.micropython.org.cn
  */
 
+enum BMP280_I2C_ADDRESS {
+    //% block="0x76"
+    ADDR_0x76 = 0x76,
+    //% block="0x77"
+    ADDR_0x77 = 0x77
+}
 /**
  * BMP280 block
  */
-//% weight=100 color=#70c0f0 icon="⚒"
+//% weight=100 color=#70c0f0 icon="\uf042" block="BMP280"
 namespace BMP280 {
-    let BMP280_I2C_ADDR = 0x76
+    let BMP280_I2C_ADDR = BMP280_I2C_ADDRESS.ADDR_0x76
 
     function setreg(reg: number, dat: number): void {
         let buf = pins.createBuffer(2);
@@ -75,7 +81,8 @@ namespace BMP280 {
     /**
      * get pressure
      */
-    //% block
+    //% blockId="BMP280_GET_PRESSURE" block="get pressure"
+    //% weight=80 blockGap=8
     export function pressure(): number {
         get();
         return P;
@@ -84,7 +91,8 @@ namespace BMP280 {
     /**
      * get temperature
      */
-    //% block
+    //% blockId="BMP280_GET_TEMPERATURE" block="get temperature"
+    //% weight=80 blockGap=8
     export function temperature(): number {
         get();
         return T;
@@ -93,7 +101,8 @@ namespace BMP280 {
     /**
      * power on
      */
-    //% block
+    //% blockId="BMP280_POWER_ON" block="Power On"
+    //% weight=61 blockGap=8
     export function PowerOn() {
         setreg(0xF4, 0x2F)
     }
@@ -101,9 +110,18 @@ namespace BMP280 {
     /**
      * power off
      */
-    //% block
+    //% blockId="BMP280_POWER_OFF" block="Power Off"
+    //% weight=60 blockGap=8
     export function PowerOff() {
         setreg(0xF4, 0)
     }
 
+    /**
+     * set I2C address
+     */
+    //% blockId="BMP280_SET_ADDRESS" block="set address %addr"
+    //% weight=50 blockGap=8
+    export function Address(addr: BMP280_I2C_ADDRESS) {
+        BMP280_I2C_ADDR = addr
+    }
 }
